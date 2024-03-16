@@ -16,7 +16,7 @@ def calculate_sample_size(alpha, beta, baseline_conversion, mde):
     
     return int(round(sample_size)) *  2
 
-st.title('Fitfly - Data Science Intern Assignment')
+st.title('Fittlyf - Data Science Intern Assignment')
 st.subheader('Sample Size Calculator 📏')
 st.markdown('Enter the baseline conversion rate and the minimum detectable effect to calculate the sample size needed for an A/B test.')
 st.markdown('---')

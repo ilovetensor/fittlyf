@@ -47,7 +47,7 @@ def perform_ab_test(control_visitors, control_conversions, treatment_visitors, t
     
 
 
-st.title('Fitfly - Data Science Intern Assignment')
+st.title('Fittlyf - Data Science Intern Assignment')
 st.subheader('Hypothesis Testing ✅')
 st.markdown('Enter the number of visitors and conversions for the control and treatment groups to determine if the treatment group is better than the control group.')
 st.markdown('---')
