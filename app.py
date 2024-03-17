@@ -52,31 +52,62 @@ st.subheader('Hypothesis Testing ✅')
 st.markdown('Enter the number of visitors and conversions for the control and treatment groups to determine if the treatment group is better than the control group.')
 st.markdown('---')
 
-
-col_1 = st.columns(2)
-with col_1[0]:
-    control_visitors = st.number_input('Control Visitors', min_value=0, max_value=100000, value=2)
-with col_1[1]:
-    control_conversions = st.number_input('Control Conversions', min_value=0, max_value=100000, value=2)
-
-col_2 = st.columns(2)
-with col_2[0]:
-    treatment_visitors = st.number_input('Treatment Visitors', min_value=0, max_value=100000, value=2)
-with col_2[1]:
-    treatment_conversions = st.number_input('Treatment Conversions', min_value=0, max_value=100000, value=8)
-
-col_3 = st.columns(3)
-with col_3[0]:
-    confidence_level = st.selectbox('Conficence Level (%)', options=[90, 95, 99], index=1)
+sliders = st.checkbox('Slider Mode')
 
 
-# Perform A/B Test
-if st.button('Perform A/B Test'):
-    result = perform_ab_test(control_visitors, control_conversions, treatment_visitors, treatment_conversions, confidence_level)
-    if result == "Experiment Group is Better":
-        st.success(result)
-    elif result == "Control Group is Better":
-        st.error(result)
-    else:
-        st.warning(result)  
+if not sliders:
+    col_1 = st.columns(2)
+    with col_1[0]:
+        control_visitors = st.number_input('Control Visitors', min_value=0, max_value=100000, value=2)
+    with col_1[1]:
+        control_conversions = st.number_input('Control Conversions', min_value=0, max_value=100000, value=2)
+
+    col_2 = st.columns(2)
+    with col_2[0]:
+        treatment_visitors = st.number_input('Treatment Visitors', min_value=0, max_value=100000, value=2)
+    with col_2[1]:
+        treatment_conversions = st.number_input('Treatment Conversions', min_value=0, max_value=100000, value=8)
+
+    col_3 = st.columns(3)
+    with col_3[0]:
+        confidence_level = st.selectbox('Conficence Level (%)', options=[90, 95, 99], index=1)
+
+
+    # Perform A/B Test
+    if st.button('Perform A/B Test'):
+        result = perform_ab_test(control_visitors, control_conversions, treatment_visitors, treatment_conversions, confidence_level)
+        if result == "Experiment Group is Better":
+            st.success(result)
+        elif result == "Control Group is Better":
+            st.error(result)
+        else:
+            st.warning(result)  
+
+else:
+    col_1 = st.columns(2)
+    with col_1[0]:
+        control_visitors = st.slider('Control Visitors', min_value=0, max_value=100000, value=2)
+    with col_1[1]:
+        control_conversions = st.slider('Control Conversions', min_value=0, max_value=100000, value=2)
+
+    col_2 = st.columns(2)
+    with col_2[0]:
+        treatment_visitors = st.slider('Treatment Visitors', min_value=0, max_value=100000, value=2)
+    with col_2[1]:
+        treatment_conversions = st.slider('Treatment Conversions', min_value=0, max_value=100000, value=8)
+
+    col_3 = st.columns(3)
+    with col_3[0]:
+        confidence_level = st.selectbox('Conficence Level (%)', options=[90, 95, 99], index=1)
+
+
+    # Perform A/B Test
+    if st.button('Perform A/B Test'):
+        result = perform_ab_test(control_visitors, control_conversions, treatment_visitors, treatment_conversions, confidence_level)
+        if result == "Experiment Group is Better":
+            st.success(result)
+        elif result == "Control Group is Better":
+            st.error(result)
+        else:
+            st.warning(result)
 
